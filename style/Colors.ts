@@ -8,7 +8,7 @@ export const colors = StyleSheet.create({
         backgroundColor:'#1E1E1E'
     },
     lightButtonForm:{
-        backgroundColor:'pink'
+        backgroundColor:'blue'
     },
     darkButtonForm:{
         backgroundColor:'#162e5c'
