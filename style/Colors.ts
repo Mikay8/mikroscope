@@ -31,8 +31,8 @@ export const colors = StyleSheet.create({
         color:'white'
     },
     darkDatepicker:{
-        backgroundColor:'transparent',
-        borderColor: 'transparent',
+        backgroundColor:'blue',
+        borderColor: 'blue',
         borderBottomColor:'blue',
         color:'black'
     },

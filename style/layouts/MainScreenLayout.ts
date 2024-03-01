@@ -7,8 +7,9 @@ export const layout = StyleSheet.create({
       
     },
     topNav:{
-      paddingTop:30,
-      justifyContent:'flex-start',
+     
+      alignItems: 'flex-start', // Align items to the start (left)
+      justifyContent: 'flex-start', // Align items to the start (top)
       
     }
   });
