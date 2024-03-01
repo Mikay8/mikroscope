@@ -7,10 +7,9 @@ import {colors} from '@/style/Colors';
 
 export default function Index() {
   const colorScheme = useColorScheme();
-
   return (
 
-  <ApplicationProvider {...eva} theme={eva.light} >
+  <ApplicationProvider {...eva} theme={colorScheme === 'dark' ? eva.dark: eva.light} >
       <MainScreen/>
     
             

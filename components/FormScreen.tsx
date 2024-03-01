@@ -28,7 +28,7 @@ const FormScreen:  React.FC<FormComponentProps> = ({ onSubmit}) => {
     return [layout.input, colorScheme === 'dark' ? colors.darkInput : colors.lightInput]
   }
   const DatepickerStyle = ()=>{
-    return [layout.datepicker, colorScheme === 'dark' ? colors.darkInput : colors.lightInput]
+    return [layout.datepicker, colorScheme === 'dark' ? colors.darkDatepicker : colors.lightDatepicker]
   }
   const ButtonStyle = ()=>{
     return [layout.button, colorScheme === 'dark' ? colors.darkButtonForm : colors.lightButtonForm]

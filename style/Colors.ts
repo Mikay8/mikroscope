@@ -2,22 +2,39 @@ import { StyleSheet } from 'react-native';
 
 export const colors = StyleSheet.create({
     lightBackground:{
-        backgroundColor:'#F1F1F1'
+        backgroundColor:'blue',
     },
     darkBackground:{
-        backgroundColor:'#1E1E1E'
+        backgroundColor:'pink',
     },
     lightButtonForm:{
-        backgroundColor:'blue'
+        
     },
     darkButtonForm:{
-        backgroundColor:'#162e5c'
+       
     },
     lightInput:{
-        backgroundColor:'transparent'
+        backgroundColor:'transparent',
+        borderColor: 'transparent',
+        borderBottomColor:'blue',
     },
     darkInput:{
-        backgroundColor:'transparent'
+        backgroundColor:'transparent',
+        borderColor: 'transparent',
+        borderBottomColor:'blue',
+        color:'black'
+    },
+    lightDatepicker:{
+        backgroundColor:'transparent',
+        borderColor: 'transparent',
+        borderBottomColor:'blue',
+        color:'white'
+    },
+    darkDatepicker:{
+        backgroundColor:'transparent',
+        borderColor: 'transparent',
+        borderBottomColor:'blue',
+        color:'black'
     },
     lightH1:{
        color:'#1E1E1E'
