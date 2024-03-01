@@ -3,13 +3,9 @@ export const layout = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center',
-      
     },
     topNav:{
-     
       alignItems: 'flex-start', // Align items to the start (left)
       justifyContent: 'flex-start', // Align items to the start (top)
-      
     }
   });

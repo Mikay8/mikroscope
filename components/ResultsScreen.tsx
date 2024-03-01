@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet,useColorScheme } from 'react-native';
 import { Button, Layout, Text, TopNavigation } from '@ui-kitten/components';
 import {colors} from '@/style/Colors';
-import {layout} from '@/style/layouts/MainScreenLayout';
+import {layout} from '@/style/layouts/ResultScreenLayout';
 
 interface FormComponentProps {
   name: string,

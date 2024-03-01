@@ -47,26 +47,24 @@ export default function MainScreen() {
   return (
    <>
    
-               <Layout style={containerStyle()}>
+          <Layout style={containerStyle()}>
             
-            {
-            showResult 
-            ?
-            <Layout >
-              
-                  <TopNavigation style={navStyle()}alignment='start' accessoryLeft={BackAction}/>
-                  
-                    <ResultsScreen name={name} date={date}/>
-                  
+              {
+              showResult 
+              ?
+              <Layout >
                 
-            </Layout> 
-            :
-            <Layout style={containerStyle()}>
-          
-                <FormScreen onSubmit={handleSubmit} />
-              
-            </Layout> 
-            }
+                    <TopNavigation style={navStyle()}alignment='start' accessoryLeft={BackAction}/>
+                    <ResultsScreen name={name} date={date}/>
+                    
+              </Layout> 
+              :
+              <Layout style={containerStyle()} >
+            
+                  <FormScreen onSubmit={handleSubmit} />
+                
+              </Layout> 
+              }
 
           </Layout>
           
