@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Dimensions} from 'react-native';
 import { Layout,TopNavigation, Button  } from '@ui-kitten/components';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import FormScreen from './FormScreen';
 import {colors} from '@/style/Colors';
 import {layout} from '@/style/layouts/MainScreenLayout';
 import { getStarSign } from './helper/getStarSigns';
+import {getTopTracks} from '@/services/spotifyService'
 
 export default function MainScreen() {
   const windowDimensions = Dimensions.get('window');
@@ -16,13 +17,23 @@ export default function MainScreen() {
   const [date, setDate] = useState<Date>(now);
   const [showResult, setShowResult] = useState(false);
   const insets = useSafeAreaInsets();
+  useEffect(() => {
+    const fetchTopTracks = async () => {
+      try {
+        const tracks = await getTopTracks('0TnOYISbd1XYRBk9myaseg');
+        console.debug(tracks);
+      } catch (error) {
+        console.error('Error fetching top tracks:', error);
+      }
+    };
+    fetchTopTracks();
+  }, [showResult]);
 
   const handleSubmit = (submittedName: string, submittedDate: Date) => {
     // Handle form submission
     setName(submittedName);
     setDate(submittedDate);
     setStarSign(getStarSign(submittedDate));
-    console.debug(getStarSign(submittedDate));
     if((submittedName.length>0) && submittedDate){
       setShowResult(true);
     }else{

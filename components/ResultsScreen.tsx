@@ -10,8 +10,7 @@ interface FormComponentProps {
 }
 
 const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date, starSign}) => {
-  console.log("Results "+name);
-  console.log("Results "+date);
+
   const artistLists = [
     { title: 'Card 1', description: 'Description for Card 1' },
     { title: 'Card 2', description: 'Description for Card 2' },
