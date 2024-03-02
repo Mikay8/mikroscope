@@ -5,10 +5,11 @@ import {layout} from '@/style/layouts/ResultScreenLayout';
 import ArtistCardCarousel from '@/components/features/ArtistCardCarousel'
 interface FormComponentProps {
   name: string,
-  date: string
+  date: string,
+  starSign: string
 }
 
-const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date}) => {
+const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date, starSign}) => {
   console.log("Results "+name);
   console.log("Results "+date);
   const artistLists = [
@@ -22,7 +23,7 @@ const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date}) => {
       <Layout style={layout.container}>
         <Text category='h1' >Hello {name} </Text>
         <Text category='s1'>Birthday {date}</Text>
-        <Text category='s1'>You are a scorpio!</Text>
+        <Text category='s1'>You are a {starSign}!</Text>
         <Text category='s1'>Here are some arists...</Text>
         <Layout style={layout.scrollHeight}>
           <ArtistCardCarousel aristsList={artistLists}/>

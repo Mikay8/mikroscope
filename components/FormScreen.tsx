@@ -5,7 +5,7 @@ import {colors} from '@/style/Colors';
 import {layout} from '@/style/layouts/FormScreenLayout';
 
 interface FormComponentProps {
-    onSubmit: (name: string, date: string) => void;
+    onSubmit: (name: string, date: Date) => void;
   }
 const FormScreen:  React.FC<FormComponentProps> = ({ onSubmit}) => {
   const now = new Date();
@@ -15,7 +15,7 @@ const FormScreen:  React.FC<FormComponentProps> = ({ onSubmit}) => {
   const [date, setDate] = useState<Date>(now);
 
   const handleSubmit = () => {
-    onSubmit(name, date.toLocaleDateString());
+    onSubmit(name, date);
 
     //setName("");
   };

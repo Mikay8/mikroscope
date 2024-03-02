@@ -6,28 +6,31 @@ import ResultsScreen from './ResultsScreen';
 import FormScreen from './FormScreen';
 import {colors} from '@/style/Colors';
 import {layout} from '@/style/layouts/MainScreenLayout';
+import { getStarSign } from './helper/getStarSigns';
 
 export default function MainScreen() {
   const windowDimensions = Dimensions.get('window');
+  const now = new Date();
   const [name, setName] = useState('');
-  const [date, setDate] = useState('');
+  const [starSign, setStarSign] = useState('');
+  const [date, setDate] = useState<Date>(now);
   const [showResult, setShowResult] = useState(false);
   const insets = useSafeAreaInsets();
-  const handleSubmit = (submittedName: string, submittedDate: string) => {
+
+  const handleSubmit = (submittedName: string, submittedDate: Date) => {
     // Handle form submission
     setName(submittedName);
     setDate(submittedDate);
-    
+    setStarSign(getStarSign(submittedDate));
+    console.debug(getStarSign(submittedDate));
     if((submittedName.length>0) && submittedDate){
       setShowResult(true);
     }else{
       setShowResult(false);
     }
-
   };
   const handleBackBtn = () => {
     // Handle button press
-    console.log('Button pressed');
     setShowResult(false);
   };
   
@@ -42,7 +45,6 @@ export default function MainScreen() {
       {marginBottom: -insets.bottom, marginTop: -insets.top,}] //extends the colors 
   }
   const maxWidthcontainerStyle = ()=>{
-    console.debug(windowDimensions.width);
     return [ {width: windowDimensions.width,}] //extends the colors 
   }
   return (
@@ -58,7 +60,7 @@ export default function MainScreen() {
                     <TopNavigation style={navStyle()}alignment='start' accessoryLeft={BackAction}/>
                   </Layout >
                     
-                    <ResultsScreen name={name} date={date}/>
+                    <ResultsScreen name={name} date={date.toLocaleDateString()} starSign={starSign}/>
                     
               </Layout> 
               :

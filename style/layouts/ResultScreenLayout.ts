@@ -9,18 +9,18 @@ export const layout = StyleSheet.create({
       height:230
     },
     card: {
-      width: 300,
+      width: 200,
       margin: 10,
       height:200,
       alignItems: 'center', // Center items horizontally
-      
+      justifyContent: 'center', // Center the image vertically
     },
     cardImageContainer: {
-      borderRadius: 50, // Make the container circular
-    overflow: 'hidden', // Clip the image to the container's border
+      borderRadius: 60, // Make the container circular
+      overflow: 'hidden', // Clip the image to the container's border
       alignItems: 'center', // Center the image horizontally
       justifyContent: 'center', // Center the image vertically
-      width: 100,
+      width: 'auto',
       height: 100,
       
       marginBottom: 10,
