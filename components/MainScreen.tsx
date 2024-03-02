@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Dimensions} from 'react-native';
 import { Layout,TopNavigation, Button  } from '@ui-kitten/components';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ResultsScreen from './ResultsScreen';
@@ -7,7 +8,7 @@ import {colors} from '@/style/Colors';
 import {layout} from '@/style/layouts/MainScreenLayout';
 
 export default function MainScreen() {
-  
+  const windowDimensions = Dimensions.get('window');
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [showResult, setShowResult] = useState(false);
@@ -40,6 +41,10 @@ export default function MainScreen() {
     return [layout.container, 
       {marginBottom: -insets.bottom, marginTop: -insets.top,}] //extends the colors 
   }
+  const maxWidthcontainerStyle = ()=>{
+    console.debug(windowDimensions.width);
+    return [ {width: windowDimensions.width,}] //extends the colors 
+  }
   return (
    <>
    
@@ -49,8 +54,10 @@ export default function MainScreen() {
               showResult 
               ?
               <Layout >
-                
+                 <Layout style={maxWidthcontainerStyle()} >
                     <TopNavigation style={navStyle()}alignment='start' accessoryLeft={BackAction}/>
+                  </Layout >
+                    
                     <ResultsScreen name={name} date={date}/>
                     
               </Layout> 

@@ -37,7 +37,7 @@ const FormScreen:  React.FC<FormComponentProps> = ({ onSubmit}) => {
         style={layout.datepicker}
         onSelect={(nextDate) => setDate(nextDate)}
         placeholder='Pick Date'
-        placement='bottom'    
+        placement='top'    
         min={min} // Minimum selectable date (January 1, 1900)
         max={tomorrow} // Maximum selectable date today
       />
