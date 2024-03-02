@@ -11,8 +11,7 @@ export default function Index() {
     <>
     
     
-    <ApplicationProvider {...eva} theme={colorScheme === 'dark' ? eva.dark: eva.light} >
-    <SafeAreaView style={{ flex: 0, backgroundColor: 'red' }} />
+    <ApplicationProvider {...eva}theme={colorScheme === 'dark' ? eva.dark: eva.light} >
     <StatusBar barStyle={colorScheme === 'dark' ? 'light-content': 'dark-content'} />
           <MainScreen/>   
       </ApplicationProvider>
