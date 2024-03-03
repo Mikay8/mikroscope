@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { encode } from 'base-64'; 
-
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '@env'; 
 
 const clientId = '';
 const clientSecret = '';
@@ -31,7 +31,7 @@ async function getAccessToken(clientId: string, clientSecret: string): Promise<s
 export async function getTopTracks(artistId: string): Promise<string[]> {
     try {
         // Obtain access token
-        const accessToken = await getAccessToken(clientId, clientSecret);
+        const accessToken = await getAccessToken(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET);
     
         // Make request to Spotify API to get top tracks
         const response: AxiosResponse<any> = await axios.get(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=US`, {
@@ -47,6 +47,57 @@ export async function getTopTracks(artistId: string): Promise<string[]> {
         console.error('Error retrieving top tracks:', error);
         return [];
       }
+}
+
+export async function getArtistId(artistName: string): Promise<string | null> {
+  try {
+    const accessToken = await getAccessToken(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET);
+    const response: AxiosResponse<any> = await axios.get(
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(artistName)}&type=artist`,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      }
+    );
+
+    const artists = response.data.artists.items;
+    if (artists.length > 0) {
+      return artists[0].id; // Return the ID of the first artist found
+    } else {
+      return null; // Return null if no artist with the given name is found
+    }
+  } catch (error) {
+    console.error('Error searching for artist:', error);
+    throw new Error('Failed to search for artist');
+  }
+}
+
+export async function getArtistTopTracks(artistName: string): Promise<string[] | null> {
+  try {
+    
+    const accessToken = await getAccessToken(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET);
+    const artistId = await getArtistId(artistName);
+    if (!artistId) {
+      throw new Error('Artist not found');
+    }
+
+    
+    const response: AxiosResponse<any> = await axios.get(
+      `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=US`, // Specify country if needed
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      }
+    );
+
+    const topTracks = response.data.tracks.map((track: any) => track.name);
+    return topTracks;
+  } catch (error) {
+    console.error('Error fetching artist top tracks:', error);
+    throw new Error('Failed to fetch artist top tracks');
+  }
 }
 
 
