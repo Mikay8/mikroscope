@@ -20,7 +20,7 @@ export const layout = StyleSheet.create({
       overflow: 'hidden', // Clip the image to the container's border
       alignItems: 'center', // Center the image horizontally
       justifyContent: 'center', // Center the image vertically
-      width: 'auto',
+      width: 100,
       height: 100,
       
       marginBottom: 10,

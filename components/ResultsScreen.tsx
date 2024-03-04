@@ -44,7 +44,7 @@ const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date, starSign}) =
         {
           celebrityList&&
           <Layout style={layout.scrollHeight}>
-          <ArtistCardCarousel aristsList={celebrityList}/>
+          <ArtistCardCarousel artistsList={celebrityList}/>
         </Layout>
         }
         

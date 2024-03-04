@@ -12,12 +12,12 @@ type celebrityType = {
         const celebrityNameList = await scrapeFamousBirthdays(starSign);
         let celebrityList: Array<celebrityType> = [];
         for (let i=0;i<4;i++ ){
-            const imageUrls = await getArtistUrl(starSign);
+            const imageUrls = await getArtistUrl(celebrityNameList[i])||{image:'',spotifyUrl:''};
             celebrityList.push(
                 {
                     name:celebrityNameList[i], 
-                    image: imageUrls?.image||'https://i.scdn.co/image/ab6761610000e5eb2b7962ada66cbea99dcb0caa',
-                    spotify: imageUrls?.spotifyUrl||'https://open.spotify.com/artist/6vWDO969PvNqNYHIOW5v0m',
+                    image: imageUrls.image,
+                    spotify: imageUrls.spotifyUrl,
                 });
         }
       return celebrityList;

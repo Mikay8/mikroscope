@@ -24,7 +24,7 @@ async function getAccessToken(clientId: string, clientSecret: string): Promise<s
       return response.data.access_token;
     } catch (error) {
       console.error('Error obtaining access token:', error);
-      throw new Error('Failed to obtain access token');
+      return '';
     }
   }
   
@@ -69,7 +69,7 @@ export async function getArtistId(artistName: string): Promise<string | null> {
     }
   } catch (error) {
     console.error('Error searching for artist:', error);
-    throw new Error('Failed to search for artist');
+    return '';
   }
 }
 
@@ -96,7 +96,7 @@ export async function getArtistTopTracks(artistName: string): Promise<string[] |
     return topTracks;
   } catch (error) {
     console.error('Error fetching artist top tracks:', error);
-    throw new Error('Failed to fetch artist top tracks');
+    return [];
   }
 }
 
@@ -109,10 +109,6 @@ export async function getArtistUrl(artistName: string): Promise<artistUrlType | 
     
     const accessToken = await getAccessToken(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET);
     const artistId = await getArtistId(artistName);
-    if (!artistId) {
-      throw new Error('Artist not found');
-    }
-
     
     const response: AxiosResponse<any> = await axios.get(
       `https://api.spotify.com/v1/artists/${artistId}/`, // Specify country if needed
@@ -126,9 +122,10 @@ export async function getArtistUrl(artistName: string): Promise<artistUrlType | 
     const image = {image:response.data.images[0].url,
       spotifyUrl:response.data.external_urls.spotify,
     }
+
     return image;
   } catch (error) {
-    console.error('Error fetching artist top tracks:', error);
+    console.error('Error fetching artist:', error);
     //throw new Error('Failed to fetch artist top tracks');
     return{image:'',spotifyUrl:''};
   }
