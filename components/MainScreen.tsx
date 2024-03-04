@@ -19,17 +19,6 @@ export default function MainScreen() {
   const [date, setDate] = useState<Date>(now);
   const [showResult, setShowResult] = useState(false);
   const insets = useSafeAreaInsets();
-  useEffect(() => {
-    const fetchTopTracks = async () => {
-      try {
-        const tracks = await getCelebrityArray('scorpio');
-        console.debug(tracks);
-      } catch (error) {
-        console.error('Error fetching top tracks:', error);
-      }
-    };
-    fetchTopTracks();
-  }, [starSign]);
 
   const handleSubmit = (submittedName: string, submittedDate: Date) => {
     // Handle form submission
