@@ -7,7 +7,9 @@ import FormScreen from './FormScreen';
 import {colors} from '@/style/Colors';
 import {layout} from '@/style/layouts/MainScreenLayout';
 import { getStarSign } from './helper/getStarSigns';
-import {getTopTracks, getArtistId, getArtistTopTracks} from '@/services/spotifyService'
+import { getCelebrityArray } from './helper/getCelebrityArray';
+import {getTopTracks, getArtistId, getArtistUrl} from '@/services/spotifyService'
+
 
 export default function MainScreen() {
   const windowDimensions = Dimensions.get('window');
@@ -20,14 +22,14 @@ export default function MainScreen() {
   useEffect(() => {
     const fetchTopTracks = async () => {
       try {
-        const tracks = await getArtistTopTracks('L');
+        const tracks = await getCelebrityArray('scorpio');
         console.debug(tracks);
       } catch (error) {
         console.error('Error fetching top tracks:', error);
       }
     };
     fetchTopTracks();
-  }, [showResult===true]);
+  }, [starSign]);
 
   const handleSubmit = (submittedName: string, submittedDate: Date) => {
     // Handle form submission

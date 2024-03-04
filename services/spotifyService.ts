@@ -100,4 +100,37 @@ export async function getArtistTopTracks(artistName: string): Promise<string[] |
   }
 }
 
+type artistUrlType = {
+  image: string;
+  spotifyUrl: string;
+};
+export async function getArtistUrl(artistName: string): Promise<artistUrlType | null> {
+  try {
+    
+    const accessToken = await getAccessToken(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET);
+    const artistId = await getArtistId(artistName);
+    if (!artistId) {
+      throw new Error('Artist not found');
+    }
+
+    
+    const response: AxiosResponse<any> = await axios.get(
+      `https://api.spotify.com/v1/artists/${artistId}/`, // Specify country if needed
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      }
+    );
+
+    const image = {image:response.data.images[0].url,
+      spotifyUrl:response.data.external_urls.spotify,
+    }
+    return image;
+  } catch (error) {
+    console.error('Error fetching artist top tracks:', error);
+    //throw new Error('Failed to fetch artist top tracks');
+    return{image:'',spotifyUrl:''};
+  }
+}
 
