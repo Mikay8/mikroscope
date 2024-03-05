@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Text } from '@ui-kitten/components';
-import {colors} from '@/style/Colors';
-import {layout} from '@/style/layouts/ResultScreenLayout';
-import ArtistCardCarousel from '@/components/features/ArtistCardCarousel'
-import { getCelebrityArray } from './helper/getCelebrityArray';
+import {colors} from '@/front-end/style/Colors';
+import {layout} from '@/front-end/style/layouts/ResultScreenLayout';
+import ArtistCardCarousel from '@/front-end/components/features/ArtistCardCarousel'
+import { getCelebrityArray } from './components/helper/getCelebrityArray';
 
 interface FormComponentProps {
   name: string,

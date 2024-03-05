@@ -4,11 +4,11 @@ import { Layout,TopNavigation, Button  } from '@ui-kitten/components';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import ResultsScreen from './ResultsScreen';
 import FormScreen from './FormScreen';
-import {colors} from '@/style/Colors';
-import {layout} from '@/style/layouts/MainScreenLayout';
-import { getStarSign } from './helper/getStarSigns';
-import { getCelebrityArray } from './helper/getCelebrityArray';
-import {getTopTracks, getArtistId, getArtistUrl} from '@/api/spotifyApiCalls'
+import {colors} from '@/front-end/style/Colors';
+import {layout} from '@/front-end/style/layouts/MainScreenLayout';
+import { getStarSign } from './components/helper/getStarSigns';
+import { getCelebrityArray } from './components/helper/getCelebrityArray';
+import {getTopTracks, getArtistId, getArtistUrl} from '@/front-end/api/spotifyApiCalls'
 
 
 export default function MainScreen() {

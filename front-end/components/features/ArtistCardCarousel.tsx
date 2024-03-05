@@ -1,7 +1,7 @@
 import React, { useState, useEffect,Fragment,FC } from 'react';
 import { View, ScrollView, Image,Linking } from 'react-native';
 import { Card, Text, Button } from '@ui-kitten/components';
-import {layout} from '@/style/layouts/ResultScreenLayout';
+import {layout} from '@/front-end/style/layouts/ResultScreenLayout';
 import ArtistModal from './ArtistModal';
 type artistUrlType = {
   name: string;

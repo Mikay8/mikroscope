@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Layout, Input, Button,Datepicker, DatepickerProps, } from '@ui-kitten/components';
 import { Image } from 'react-native';
-import {colors} from '@/style/Colors';
-import {layout} from '@/style/layouts/FormScreenLayout';
+import {colors} from '@/front-end/style/Colors';
+import {layout} from '@/front-end/style/layouts/FormScreenLayout';
 
 interface FormComponentProps {
     onSubmit: (name: string, date: Date) => void;
