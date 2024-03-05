@@ -8,7 +8,7 @@ import {colors} from '@/style/Colors';
 import {layout} from '@/style/layouts/MainScreenLayout';
 import { getStarSign } from './helper/getStarSigns';
 import { getCelebrityArray } from './helper/getCelebrityArray';
-import {getTopTracks, getArtistId, getArtistUrl} from '@/services/spotifyService'
+import {getTopTracks, getArtistId, getArtistUrl} from '@/api/spotifyApiCalls'
 
 
 export default function MainScreen() {

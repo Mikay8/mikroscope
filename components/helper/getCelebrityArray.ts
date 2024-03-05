@@ -1,5 +1,5 @@
 import {scrapeFamousBirthdays} from '@/scraper/famousbirthday'
-import {getArtistUrl} from '@/services/spotifyService'
+import {getArtistUrl} from '@/api/spotifyApiCalls'
 
 type celebrityType = {
     name: string;
