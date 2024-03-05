@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { JSDOM } from 'jsdom';
 
-export async function scrapeFamousBirthdays(starSign: string): Promise<string[]> {
+export async function getArtistsByStarSign(starSign: string): Promise<string[]> {
     try {
       // Fetch the HTML content of the famousbirthdays.com page
       const response = await fetch(`https://www.famousbirthdays.com/astrology/career/${starSign}-singer.html`);
@@ -16,7 +16,7 @@ export async function scrapeFamousBirthdays(starSign: string): Promise<string[]>
         //console.debug(match);
         celebrityNames.push(match[1]);
       }
-      
+      console.debug(celebrityNames)
       return celebrityNames;
     } catch (error) {
       console.error('Error scraping famousbirthdays.com:', error);

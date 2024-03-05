@@ -1,4 +1,4 @@
-import {scrapeFamousBirthdays} from '@/scraper/famousbirthday'
+import {getArtistsByStarSign} from '@/front-end/api/famousbirthdayApiCalls'
 import {getArtistUrl} from '@/front-end/api/spotifyApiCalls'
 
 type celebrityType = {
@@ -9,7 +9,7 @@ type celebrityType = {
 
  export async function getCelebrityArray(starSign: string): Promise<celebrityType[]> {
     try {
-        const celebrityNameList = await scrapeFamousBirthdays(starSign);
+        const celebrityNameList = await getArtistsByStarSign(starSign);
         let celebrityList: Array<celebrityType> = [];
         for (let i=0;i<4;i++ ){
             const imageUrls = await getArtistUrl(celebrityNameList[i])||{image:'',spotifyUrl:''};
