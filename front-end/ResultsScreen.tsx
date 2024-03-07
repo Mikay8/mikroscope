@@ -23,7 +23,7 @@ const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date, starSign}) =
         const celebList = await getCelebrityArray(starSign.toLowerCase());
         
         setCelebrityList(celebList);
-        console.debug(celebList);
+        //console.debug(celebList);
         return celebList;
       } catch (error) {
         console.error('Error fetching top tracks:', error);

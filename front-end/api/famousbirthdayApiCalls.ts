@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse }  from 'axios';
 import { JSDOM } from 'jsdom';
 
 export async function getArtistsByStarSign(starSign: string): Promise<string[]> {
@@ -16,7 +16,7 @@ export async function getArtistsByStarSign(starSign: string): Promise<string[]> 
         //console.debug(match);
         celebrityNames.push(match[1]);
       }
-      console.debug(celebrityNames)
+      //console.debug(celebrityNames)
       return celebrityNames;
     } catch (error) {
       console.error('Error scraping famousbirthdays.com:', error);
@@ -24,4 +24,17 @@ export async function getArtistsByStarSign(starSign: string): Promise<string[]> 
     }
   }
   
+  export async function getArtistsByStarSign2(starSign: string, job: string): Promise<string[]> {
+    try {
+        
+        // Make request to Spotify API to get top tracks
 
+        // Extract top track names
+        const celebs: string[] = response.data.map((celeb: any) => celeb.name);
+        console.debug(celebs)
+        return celebs;
+      } catch (error) {
+        console.error('Error retrieving top tracks:', error);
+        return [];
+      }
+}
