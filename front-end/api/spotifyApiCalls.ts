@@ -23,7 +23,7 @@ async function getAccessToken(clientId: string, clientSecret: string): Promise<s
   
       return response.data.access_token;
     } catch (error) {
-      console.error('Error obtaining access token:', error);
+      console.error('SPOTIFY: Error obtaining access token:', error);
       return '';
     }
   }
@@ -44,7 +44,7 @@ export async function getTopTracks(artistId: string): Promise<string[]> {
         const topTracks: string[] = response.data.tracks.map((track: any) => track.name);
         return topTracks;
       } catch (error) {
-        console.error('Error retrieving top tracks:', error);
+        console.error('SPOTIFY: Error retrieving '+artistId+' top tracks:', error);
         return [];
       }
 }
@@ -68,7 +68,7 @@ export async function getArtistId(artistName: string): Promise<string | null> {
       return null; // Return null if no artist with the given name is found
     }
   } catch (error) {
-    console.error('Error searching for artist:', error);
+    console.error('SPOTIFY: Error searching for '+artistName+':', error);
     return '';
   }
 }
@@ -95,7 +95,7 @@ export async function getArtistTopTracks(artistName: string): Promise<string[] |
     const topTracks = response.data.tracks.map((track: any) => track.name);
     return topTracks;
   } catch (error) {
-    console.error('Error fetching artist top tracks:', error);
+    console.error('SPOTIFY: Error fetching '+artistName+' top tracks:', error);
     return [];
   }
 }
@@ -125,7 +125,7 @@ export async function getArtistUrl(artistName: string): Promise<artistUrlType | 
 
     return image;
   } catch (error) {
-    console.error('Error fetching artist:', error);
+    console.error('SPOTIFY: Error fetching '+artistName+' urls:', error);
     //throw new Error('Failed to fetch artist top tracks');
     return{image:'',spotifyUrl:''};
   }
