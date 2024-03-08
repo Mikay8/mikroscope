@@ -7,10 +7,11 @@ interface ArtistModalProps {
   name: string;
   image: string;
   spotifyUrl: string;
+  topSongs: string[];
   onClose: () => void;
 }
 
-const ArtistModal: React.FC<ArtistModalProps> = ({ visible, name, image, spotifyUrl, onClose }) => {
+const ArtistModal: React.FC<ArtistModalProps> = ({ visible, name, image,topSongs, spotifyUrl, onClose }) => {
   const handleOpenSpotify = () => {
     Linking.openURL(spotifyUrl);
   };
@@ -20,6 +21,10 @@ const ArtistModal: React.FC<ArtistModalProps> = ({ visible, name, image, spotify
       <View style={{ padding: 16, alignItems: 'center' }}>
         <Image source={{ uri: image }} style={{ width: 200, height: 200, marginBottom: 16 }} />
         <Text category="h4">{name}</Text>
+        {topSongs.map((item, index) => (
+        <Text key={index} category="s1">{topSongs[index]}</Text>
+        ))}
+        <Text category="s1">{topSongs[1]}</Text>
         <Button onPress={handleOpenSpotify}>Open in Spotify</Button>
       </View>
     </Modal>

@@ -3,13 +3,14 @@ import { View, ScrollView, Image,Linking } from 'react-native';
 import { Card, Text, Button } from '@ui-kitten/components';
 import {layout} from '@/front-end/style/layouts/ResultScreenLayout';
 import ArtistModal from './ArtistModal';
-type artistUrlType = {
+type artistType = {
   name: string;
   image: string;
   spotify: string;
+  topSongs: string[];
 };
 interface ArtistComponentProps {
-  artistsList: artistUrlType[]
+  artistsList: artistType[]
 }
 
 const ArtistCardCarousel: FC<ArtistComponentProps>= ({artistsList}) => {
@@ -38,6 +39,7 @@ const ArtistCardCarousel: FC<ArtistComponentProps>= ({artistsList}) => {
             visible={modals[index]}
             name={item.name}
             image={item.image}
+            topSongs={item.topSongs}
             spotifyUrl={item.spotify}
             onClose={()=>toggleModal(index)}
           />

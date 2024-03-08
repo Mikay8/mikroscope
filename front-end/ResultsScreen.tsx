@@ -3,7 +3,7 @@ import { Layout, Text } from '@ui-kitten/components';
 import {colors} from '@/front-end/style/Colors';
 import {layout} from '@/front-end/style/layouts/ResultScreenLayout';
 import ArtistCardCarousel from '@/front-end/components/features/ArtistCardCarousel'
-import { getCelebrityArray } from './components/helper/getCelebrityArray';
+import { getArtistArray } from './components/helper/getCelebrityArray';
 
 interface FormComponentProps {
   name: string,
@@ -14,19 +14,20 @@ type celebrityType = {
   name: string;
   image: string;
   spotify: string;
+  topSongs: string[];
 };
 const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date, starSign}) => {
   const [celebrityList, setCelebrityList] = useState<Array<celebrityType>>([]);
   useEffect(() => {
     const fetchCelebrities = async () => {
       try {
-        const celebList = await getCelebrityArray(starSign.toLowerCase());
+        const celebList = await getArtistArray(starSign.toLowerCase());
         
         setCelebrityList(celebList);
         //console.debug(celebList);
         return celebList;
       } catch (error) {
-        console.error('Error fetching top tracks:', error);
+        console.error('RESULTS: Error fetching:', error);
       }
     };
     
