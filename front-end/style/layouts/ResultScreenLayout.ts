@@ -38,4 +38,27 @@ export const layout = StyleSheet.create({
     cardDescription: {
       textAlign: 'center', // Center the text horizontally
     },
+    /*.  ArtistModal.tsx. */
+    modalCard: {
+      width: 350
+    },
+    modalCardImageContainer: {
+      borderRadius: 100, // Make the container circular
+      overflow: 'hidden',
+      alignItems: 'center', 
+      justifyContent: 'center', // Center the image vertically
+      width: 200,
+      height: 200,
+      marginBottom: 10,
+      marginLeft:50
+    },
+    modalCardImage: {
+      width: '100%',
+      height: '100%',
+      resizeMode: 'cover', // Make sure the image covers the entire container
+    },
+    modalCardBtn: {
+      width: 300,
+      marginTop: 10,
+    },
   });
