@@ -21,7 +21,7 @@ type celebrityType = {
             celebrityNameList = await getCelebByStarSign(starSign,"singer");
         }
         let celebrityList: Array<celebrityType> = [];
-        for (let i=0;i<4;i++ ){
+        for (let i=0;i<10;i++ ){
             // const imageUrls = await getArtistUrl(celebrityNameList[i])||{image:'',spotifyUrl:''};
             // const songs = await getArtistTopTracks(celebrityNameList[i])||[];
             const artistInfo = await getArtistInfo(celebrityNameList[i])||{id:'',image:'',spotifyUrl:'',songs:[]}
@@ -34,7 +34,7 @@ type celebrityType = {
                     topSongs: artistInfo.songs
                 });
         }
-        console.debug(celebrityList)
+      
       return celebrityList;
     } catch (error) {
       console.error('Error fetching celebrity array:', error);

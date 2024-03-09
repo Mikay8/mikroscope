@@ -44,14 +44,13 @@ const ArtistCardCarousel: FC<ArtistComponentProps>= ({artistsList}) => {
             onClose={()=>toggleModal(index)}
           />
           </Card>
-
         </Fragment>
       ))}
-       <Card style={layout.card}>
+       {/* <Card style={layout.card}>
           
           <Text category='s1' style={layout.cardTitle}>Load more...</Text>
           
-        </Card>
+        </Card> */}
     </ScrollView>
   );
 };

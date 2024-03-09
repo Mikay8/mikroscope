@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Text } from '@ui-kitten/components';
+import { Layout, Text, Spinner } from '@ui-kitten/components';
 import {colors} from '@/front-end/style/Colors';
 import {layout} from '@/front-end/style/layouts/ResultScreenLayout';
 import ArtistCardCarousel from '@/front-end/components/features/ArtistCardCarousel'
@@ -41,12 +41,13 @@ const ResultsScreen:  React.FC<FormComponentProps> = ({ name, date, starSign}) =
         <Text category='h1' >Hello {name} </Text>
         <Text category='s1'>Birthday {date}</Text>
         <Text category='s1'>You are a {starSign}!</Text>
-        <Text category='s1'>Here are some {starSign.toLowerCase()} arists...</Text>
+        <Text category='s1'>Here are your suggested artists for the day...</Text>
         {
-          celebrityList&&
-          <Layout style={layout.scrollHeight}>
-          <ArtistCardCarousel artistsList={celebrityList}/>
-        </Layout>
+          celebrityList.length>1?
+            <Layout style={layout.scrollHeight}>
+              <ArtistCardCarousel artistsList={celebrityList}/>
+            </Layout>
+        :   <Spinner size='giant'/>
         }
         
         
