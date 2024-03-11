@@ -10,7 +10,7 @@ type celebrityType = {
     topSongs: string[];
  };
 
- export async function getArtistArray(starSign: string): Promise<celebrityType[]> {
+ export async function getArtistArray(starSign: string, startIdx: number, endIdx: number): Promise<celebrityType[]> {
     try {
         let celebrityNameList;
         if(Platform.OS === 'web'){
@@ -21,7 +21,7 @@ type celebrityType = {
             celebrityNameList = await getCelebByStarSign(starSign,"singer");
         }
         let celebrityList: Array<celebrityType> = [];
-        for (let i=0;i<10;i++ ){
+        for (let i=startIdx;i<endIdx;i++ ){
             // const imageUrls = await getArtistUrl(celebrityNameList[i])||{image:'',spotifyUrl:''};
             // const songs = await getArtistTopTracks(celebrityNameList[i])||[];
             const artistInfo = await getArtistInfo(celebrityNameList[i])||{id:'',image:'',spotifyUrl:'',songs:[]}
