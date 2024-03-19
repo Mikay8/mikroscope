@@ -114,4 +114,31 @@ export async function getArtistInfo(artistName: string): Promise<artistInfoType 
     return{id:'', image:'',spotifyUrl:'', songs:[]};
   }
 }
+interface SpotifyAlbum {
+  name: string;
+  image: string;
+}
+export async function getSongInfo(songName: string): Promise<SpotifyAlbum | null> {
+  try {
+    const accessToken = await getAccessToken(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET);
+    const response = await axios.get('https://api.spotify.com/v1/search', {
+      params: {
+          q: songName,
+          type: 'track',
+          limit: 1, // Limit the results to 1 track
+      },
+      headers: {
+          Authorization: `Bearer ${accessToken}`, // Replace with your Spotify access token
+      },
+  });
+  // Extract the album image URL from the response
+  console.debug(response.data);
+
+  return{name:"",image:""};
+  } catch (error) {
+    console.error('SPOTIFY: Error fetching '+songName+' urls:', error);
+    //throw new Error('Failed to fetch artist top tracks');
+    return{name:"",image:""};
+  }
+}
 

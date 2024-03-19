@@ -1,5 +1,5 @@
 import {getCelebByStarSign, getCelebByStarSignMongoDB} from '@/front-end/api/famousbirthdayApiCalls'
-import {getArtistInfo} from '@/front-end/api/spotifyApiCalls'
+import {getArtistInfo,getSongInfo} from '@/front-end/api/spotifyApiCalls'
 import { Platform } from 'react-native';
 
 type celebrityType = {
@@ -21,18 +21,25 @@ type celebrityType = {
             celebrityNameList = await getCelebByStarSign(starSign,"singer");
         }
         let celebrityList: Array<celebrityType> = [];
-        for (let i=startIdx;i<endIdx;i++ ){
+        const ceil = Math.floor(Math.random() * (celebrityNameList.length-4));
+        for (let i=ceil;i<ceil+4;i++ ){
             // const imageUrls = await getArtistUrl(celebrityNameList[i])||{image:'',spotifyUrl:''};
             // const songs = await getArtistTopTracks(celebrityNameList[i])||[];
             const artistInfo = await getArtistInfo(celebrityNameList[i])||{id:'',image:'',spotifyUrl:'',songs:[]}
-            celebrityList.push(
-                {
-                    id: artistInfo.id,
-                    name: celebrityNameList[i], 
-                    image: artistInfo.image,
-                    spotify: artistInfo.spotifyUrl,
-                    topSongs: artistInfo.songs
-                });
+            if(artistInfo.songs.length>0){
+                celebrityList.push(
+                  {
+                      id: artistInfo.id,
+                      name: celebrityNameList[i], 
+                      image: artistInfo.image,
+                      spotify: artistInfo.spotifyUrl,
+                      topSongs: artistInfo.songs
+                  });
+              
+                  // console.debug(artistInfo.songs[0]+" "+celebrityNameList[i]);
+                  getSongInfo(artistInfo.songs[0]+" "+celebrityNameList[i]);
+            }
+            
         }
       
       return celebrityList;
