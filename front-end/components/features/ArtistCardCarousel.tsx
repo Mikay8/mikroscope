@@ -33,7 +33,6 @@ const ArtistCardCarousel: FC<ArtistComponentProps>= ({artistsList}) => {
               <Image src={item.image}  style={layout.cardImage} />
             </View>
             <Text category='s1' style={layout.cardTitle}>{item.name}</Text>
-            <Button  onPress={ ()=>{ Linking.openURL(item.spotify)}} />
             <ArtistModal
             key={`modal-${index}`} 
             visible={modals[index]}

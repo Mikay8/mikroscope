@@ -37,7 +37,7 @@ type celebrityType = {
                   });
               
                   // console.debug(artistInfo.songs[0]+" "+celebrityNameList[i]);
-                  getSongInfo(artistInfo.songs[0]+" "+celebrityNameList[i]);
+                  //getSongInfo(artistInfo.songs[0]+" "+celebrityNameList[i]);
             }
             
         }
@@ -46,5 +46,26 @@ type celebrityType = {
     } catch (error) {
       console.error('Error fetching celebrity array:', error);
       return [];
+    }
+  }
+  type songType = {
+    
+    songName: string;
+    artist: string;
+    image: string;
+    album: string;
+ };
+
+ export async function getSong(songName: string, songArtist: string): Promise<songType> {
+    try {
+        
+      const artistInfo = await getSongInfo(songName+" "+songArtist)||{name:"", image:""}
+      console.debug(songName)
+      console.debug(songArtist)
+      console.debug(artistInfo)
+      return {songName: songName, artist: songArtist, image: artistInfo.image, album: artistInfo.name};
+    } catch (error) {
+      console.error('Error fetching celebrity array:', error);
+      return {songName:"",artist:"",image:"",album:""};
     }
   }

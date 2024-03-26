@@ -132,11 +132,9 @@ export async function getSongInfo(songName: string): Promise<SpotifyAlbum | null
       },
   });
   // Extract the album image URL from the response
-  console.debug(response.data);
-
-  return{name:"",image:""};
+  return{name:response.data.tracks.items[0].album.name,image:response.data.tracks.items[0].album.images[0].url};
   } catch (error) {
-    console.error('SPOTIFY: Error fetching '+songName+' urls:', error);
+    console.error('SPOTIFY: Error fetching song:'+songName+' urls:', error);
     //throw new Error('Failed to fetch artist top tracks');
     return{name:"",image:""};
   }
